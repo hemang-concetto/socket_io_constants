@@ -8,7 +8,7 @@ void main() {
     });
 
     test('First Test', () {
-      expect(Constants.instance.addUser, isTrue);
+      expect(SocketIoConstants.instance.addUser, isTrue);
     });
   });
 }
