@@ -12,4 +12,5 @@ class SocketIoConstants {
   String userId = "user_id";
   String typing = "typing";
   String userDisconnect = "onUserDisconnect";
+  String newUserAdded = "newUserAdded";
 }
