@@ -1,1 +1,3 @@
-enum IOType { chat, videoCall, audioCall, stream, message, messageSent, messageReceived, messageSeen }
+enum IOContentType { chat, videoCall, audioCall, stream }
+
+enum IOSubType { message, messageSent, messageReceived, messageSeen }
