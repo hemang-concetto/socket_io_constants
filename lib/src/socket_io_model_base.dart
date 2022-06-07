@@ -16,7 +16,7 @@ class Content<T> {
           : json['type'],
       data: json["data"] != null ? convertMapToObject<T>(json['data']) : json["data"]);
 
-  Map<String, dynamic> toJson() => {"type": type?.enumValueToString(), "data": jsonEncode(data)};
+  Map<String, dynamic> toJson() => {"type": type?.enumValueToString(), "data": convertToMap<T>(data)};
 }
 
 class Chat {
@@ -99,7 +99,7 @@ class User {
       };
 }
 
-convertMapToObject<T>(val, {dynamic jobCount}) {
+convertMapToObject<T>(val) {
   if (val is List) {
     final list = <T>[];
     for (var element in val) {
@@ -117,6 +117,29 @@ getValue<T>(value) {
       return Chat.fromJson(value);
     case User:
       return User.fromJson(value);
+    default:
+      return value;
+  }
+}
+
+Map convertToMap<T>(val) {
+  if (val is List) {
+    final list = [];
+    for (var element in val) {
+      list.add(setValue<T>(element));
+    }
+    return {for (var v in list) v[0]: v[1]};
+  } else {
+    return setValue<T>(val);
+  }
+}
+
+Map setValue<T>(value) {
+  switch (T) {
+    case Chat:
+      return (value as Chat).toJson();
+    case User:
+      return (value as User).toJson();
     default:
       return value;
   }
