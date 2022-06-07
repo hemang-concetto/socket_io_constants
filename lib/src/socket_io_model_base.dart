@@ -65,6 +65,38 @@ class Chat {
       };
 }
 
+class User {
+  User({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.profilePic,
+  });
+
+  int? id;
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? profilePic;
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        id: json["id"],
+        firstName: json["firstName"],
+        lastName: json["lastName"],
+        email: json["email"],
+        profilePic: json["profilePic"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "profilePic": profilePic,
+      };
+}
+
 convertMapToObject<T>(val, {dynamic jobCount}) {
   if (val is List) {
     final list = <T>[];
@@ -81,6 +113,8 @@ getValue<T>(value) {
   switch (T) {
     case Chat:
       return Chat.fromJson(value);
+    case User:
+      return User.fromJson(value);
     default:
       return value;
   }
