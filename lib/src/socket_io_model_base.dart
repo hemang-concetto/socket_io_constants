@@ -58,7 +58,7 @@ class Chat {
         "fromUserId": fromUserId,
         "toUserId": toUserId,
         "message": message,
-        "dateTime": dateTime,
+        "dateTime": dateTime != null ? DateFormat("yyyy-MM-dd HH:mm:ss").format(dateTime!) : dateTime,
         "isReceived": isReceived,
         "isSeen": isSeen,
         "isSent": isSent,
