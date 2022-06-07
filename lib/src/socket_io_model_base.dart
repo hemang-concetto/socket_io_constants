@@ -11,7 +11,9 @@ class Content<T> {
   T? data;
 
   factory Content.fromJson(Map<String, dynamic> json) => Content(
-      type: json["type"] != null ? (json['type'] as String).enumValueFromString(IOSubType.values) : json['type'],
+      type: json["type"] != null
+          ? (json['type'] as String).enumValueFromString<IOSubType>(IOSubType.values)
+          : json['type'],
       data: json["data"] != null ? convertMapToObject<T>(json['data']) : json["data"]);
 
   Map<String, dynamic> toJson() => {"type": type?.enumValueToString(), "data": jsonEncode(data)};
