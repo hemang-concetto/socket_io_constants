@@ -29,7 +29,7 @@ class Chat {
     this.isSent,
   });
 
-  int? id;
+  String? id;
   int? fromUserId;
   int? toUserId;
   String? message;
