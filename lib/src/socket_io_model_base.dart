@@ -7,11 +7,11 @@ import 'package:socket_io_constants/src/extension/enum_extension.dart';
 class Content<T> {
   Content({this.type, this.data});
 
-  IOContentType? type;
+  IOType? type;
   T? data;
 
   factory Content.fromJson(Map<String, dynamic> json) => Content(
-      type: json["type"] != null ? (json['type'] as String).enumValueFromString(IOContentType.values) : json['type'],
+      type: json["type"] != null ? (json['type'] as String).enumValueFromString(IOType.values) : json['type'],
       data: json["data"] != null ? convertMapToObject<T>(json['data']) : json["data"]);
 
   Map<String, dynamic> toJson() => {"type": type?.enumValueToString(), "data": jsonEncode(data)};

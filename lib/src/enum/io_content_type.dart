@@ -1,1 +1,1 @@
-enum IOContentType { chat, videoCall, audioCall, stream }
+enum IOType { chat, videoCall, audioCall, stream, message, messageSent, messageReceived, messageSeen }
