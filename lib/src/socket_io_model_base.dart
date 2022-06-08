@@ -44,7 +44,7 @@ class Chat {
   int? fromUserId;
   int? toUserId;
   String? message;
-  DateTime? dateTime;
+  String? dateTime;
   bool? isReceived;
   bool? isSeen;
   bool? isSent;
@@ -58,7 +58,7 @@ class Chat {
         fromUserId: json["fromUserId"],
         toUserId: json["toUserId"],
         message: json["message"],
-        dateTime: json["dateTime"] != null ? DateFormat("yyyy-MM-dd HH:mm:ss").parse(json["dateTime"]) : null,
+        dateTime: json["dateTime"],
         isReceived: json["isReceived"],
         isSeen: json["isSeen"],
         isSent: json["isSent"],
@@ -69,11 +69,16 @@ class Chat {
         "fromUserId": fromUserId,
         "toUserId": toUserId,
         "message": message,
-        "dateTime": dateTime != null ? DateFormat("yyyy-MM-dd HH:mm:ss").format(dateTime!) : dateTime,
+        "dateTime": dateTime,
         "isReceived": isReceived,
         "isSeen": isSeen,
         "isSent": isSent,
       };
+
+  DateTime? convertStringToDate() {
+    if (dateTime == null) return null;
+    return DateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime!);
+  }
 }
 
 ///
