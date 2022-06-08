@@ -4,6 +4,7 @@ import 'package:floor/floor.dart';
 import 'package:intl/intl.dart';
 import 'package:socket_io_constants/src/enum/io_content_type.dart';
 import 'package:socket_io_constants/src/extension/enum_extension.dart';
+import 'package:socket_io_constants/src/extension/string_extension.dart';
 
 ///
 /// Class [Content] uses for sending and receiving data from server and client.
