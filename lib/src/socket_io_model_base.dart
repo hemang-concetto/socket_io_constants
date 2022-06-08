@@ -1,9 +1,14 @@
 import 'dart:convert';
 
+import 'package:floor/floor.dart';
 import 'package:intl/intl.dart';
 import 'package:socket_io_constants/src/enum/io_content_type.dart';
 import 'package:socket_io_constants/src/extension/enum_extension.dart';
 
+///
+/// Class [Content] uses for sending and receiving data from server and client.
+/// Here [T] is generic object which defines the Model object which comes from the response.
+///
 class Content<T> {
   Content({this.type, this.data});
 
@@ -19,6 +24,10 @@ class Content<T> {
   Map<String, dynamic> toJson() => {"type": type?.enumValueToString(), "data": convertToMap<T>(data)};
 }
 
+///
+/// Class [Chat] uses for storing and retrieving message data.
+///
+@entity
 class Chat {
   Chat({
     this.id,
@@ -67,6 +76,10 @@ class Chat {
       };
 }
 
+///
+/// Class [User] uses to store and to retrieve user data.
+///
+@entity
 class User {
   User({
     this.id,
@@ -99,6 +112,13 @@ class User {
       };
 }
 
+///
+/// The method [convertMapToObject] converts your json response to the particular object
+/// which is passed using [T]. It automatically manages JsonArray and JsonObject.
+///
+/// i.e. for getting ChatList and for getting Single Chat you directly should use :
+/// [ convertMapToObject<Chat>() ]
+///
 convertMapToObject<T>(val) {
   if (val is List) {
     final list = <T>[];
@@ -111,6 +131,9 @@ convertMapToObject<T>(val) {
   }
 }
 
+///
+/// Used to convert your json to Particular Object
+///
 getValue<T>(value) {
   switch (T) {
     case Chat:
@@ -122,6 +145,10 @@ getValue<T>(value) {
   }
 }
 
+///
+/// [convertToMap] method is used to convert your Object to Map
+/// [T] is used for generic Object
+///
 Map convertToMap<T>(val) {
   if (val is List) {
     final list = [];
@@ -134,6 +161,9 @@ Map convertToMap<T>(val) {
   }
 }
 
+///
+/// [setValue] converts your json string into Map object
+///
 Map setValue<T>(value) {
   switch (T) {
     case Chat:

@@ -1,3 +1,6 @@
+///
+/// Class defines all constants which are used for SocketIO connection in server and client side both
+///
 class SocketIoConstants {
   SocketIoConstants._privateConstructor();
 
