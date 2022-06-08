@@ -41,6 +41,9 @@ class Chat {
     this.isSent,
   });
 
+  @primaryKey
+  int? localId;
+
   String? id;
   int? fromUserId;
   int? toUserId;
@@ -94,6 +97,9 @@ class User {
     this.email,
     this.profilePic,
   });
+
+  @primaryKey
+  int? localId;
 
   int? id;
   String? firstName;
