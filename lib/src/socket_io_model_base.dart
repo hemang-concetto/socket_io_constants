@@ -32,6 +32,7 @@ class Content<T> {
 class Chat {
   Chat({
     this.id,
+    this.localId,
     this.fromUserId,
     this.toUserId,
     this.message,
@@ -59,6 +60,7 @@ class Chat {
 
   factory Chat.fromJson(Map<String, dynamic> json) => Chat(
         id: json["id"],
+        localId: json["localId"],
         fromUserId: json["fromUserId"],
         toUserId: json["toUserId"],
         message: json["message"],
@@ -70,6 +72,7 @@ class Chat {
 
   Map<String, dynamic> toJson() => {
         "id": id,
+        "localId": localId,
         "fromUserId": fromUserId,
         "toUserId": toUserId,
         "message": message,
@@ -91,6 +94,7 @@ class Chat {
 @entity
 class User {
   User({
+    this.localId,
     this.id,
     this.firstName,
     this.lastName,
@@ -109,6 +113,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],
+        localId: json["localId"],
         firstName: json["firstName"],
         lastName: json["lastName"],
         email: json["email"],
@@ -117,6 +122,7 @@ class User {
 
   Map<String, dynamic> toJson() => {
         "id": id,
+        "localId": localId,
         "firstName": firstName,
         "lastName": lastName,
         "email": email,
