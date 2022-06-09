@@ -42,7 +42,7 @@ class Chat {
     this.isSent,
   });
 
-  @primaryKey
+  @PrimaryKey(autoGenerate: true)
   int? localId;
 
   String? id;
@@ -102,7 +102,7 @@ class User {
     this.profilePic,
   });
 
-  @primaryKey
+  @PrimaryKey(autoGenerate: true)
   int? localId;
 
   int? id;
