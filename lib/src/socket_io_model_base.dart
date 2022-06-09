@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:floor/floor.dart';
+//import 'package:floor/floor.dart';
 import 'package:intl/intl.dart';
 import 'package:socket_io_constants/src/enum/io_content_type.dart';
 import 'package:socket_io_constants/src/extension/enum_extension.dart';
@@ -28,7 +28,7 @@ class Content<T> {
 ///
 /// Class [Chat] uses for storing and retrieving message data.
 ///
-@entity
+//@entity
 class Chat {
   Chat({
     this.id,
@@ -41,7 +41,7 @@ class Chat {
     this.isSent,
   });
 
-  @primaryKey
+  //@primaryKey
   int? localId;
 
   String? id;
@@ -88,7 +88,7 @@ class Chat {
 ///
 /// Class [User] uses to store and to retrieve user data.
 ///
-@entity
+//@entity
 class User {
   User({
     this.id,
@@ -98,7 +98,7 @@ class User {
     this.profilePic,
   });
 
-  @primaryKey
+  //@primaryKey
   int? localId;
 
   int? id;
