@@ -11,18 +11,24 @@ import 'package:socket_io_constants/src/extension/string_extension.dart';
 /// Here [T] is generic object which defines the Model object which comes from the response.
 ///
 class Content<T> {
-  Content({this.type, this.data});
+  Content({this.type, this.data, this.videoType});
 
   IOSubType? type;
+  IOVideoType? videoType;
+
   T? data;
 
   factory Content.fromJson(Map<String, dynamic> json) => Content(
       type: json["type"] != null
           ? (json['type'] as String).enumValueFromString<IOSubType>(IOSubType.values)
           : json['type'],
+      videoType: json["videoType"] != null
+          ? (json['videoType'] as String).enumValueFromString<IOVideoType>(IOVideoType.values)
+          : json['videoType'],
       data: json["data"] != null ? convertMapToObject<T>(json['data']) : json["data"]);
 
-  Map<String, dynamic> toJson() => {"type": type?.enumValueToString(), "data": convertToMap<T>(data)};
+  Map<String, dynamic> toJson() =>
+      {"type": type?.enumValueToString(), "data": convertToMap<T>(data), "videoType": videoType?.enumValueToString()};
 }
 
 ///
