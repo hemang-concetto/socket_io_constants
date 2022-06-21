@@ -194,7 +194,89 @@ Map setValue<T>(value) {
       return (value as Chat).toJson();
     case User:
       return (value as User).toJson();
+    case VideoCall:
+      return (value as VideoCall).toJson();
+    case Description:
+      return (value as Description).toJson();
+    case Candidate:
+      return (value as Candidate).toJson();
     default:
       return value;
   }
+}
+
+class VideoCall {
+  VideoCall({
+    this.channelName,
+    this.candidate,
+    this.fromUserId,
+    this.toUserId,
+    this.description,
+  });
+
+  String? channelName;
+  Candidate? candidate;
+  int? fromUserId;
+  int? toUserId;
+  Description? description;
+
+  factory VideoCall.fromJson(Map<String, dynamic> json) => VideoCall(
+        channelName: json["channelName"],
+        candidate: json["candidate"] == null ? null : Candidate.fromJson(json["candidate"]),
+        fromUserId: json["fromUserId"],
+        toUserId: json["toUserId"],
+        description: json["description"] == null ? null : Description.fromJson(json["description"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "channelName": channelName,
+        "candidate": candidate?.toJson(),
+        "fromUserId": fromUserId,
+        "toUserId": toUserId,
+        "description": description?.toJson(),
+      };
+}
+
+class Candidate {
+  Candidate({
+    this.sdpMLineIndex,
+    this.sdpMid,
+    this.candidate,
+  });
+
+  int? sdpMLineIndex;
+  String? sdpMid;
+  String? candidate;
+
+  factory Candidate.fromJson(Map<String, dynamic> json) => Candidate(
+        sdpMLineIndex: json["sdpMLineIndex"],
+        sdpMid: json["sdpMid"],
+        candidate: json["candidate"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "sdpMLineIndex": sdpMLineIndex,
+        "sdpMid": sdpMid,
+        "candidate": candidate,
+      };
+}
+
+class Description {
+  Description({
+    this.sdp,
+    this.type,
+  });
+
+  String? sdp;
+  String? type;
+
+  factory Description.fromJson(Map<String, dynamic> json) => Description(
+        sdp: json["sdp"],
+        type: json["type"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "sdp": sdp,
+        "type": type,
+      };
 }
