@@ -164,6 +164,12 @@ getValue<T>(value) {
       return Chat.fromJson(value);
     case User:
       return User.fromJson(value);
+    case VideoCall:
+      return VideoCall.fromJson(value);
+    case Description:
+      return Description.fromJson(value);
+    case Candidate:
+      return Candidate.fromJson(value);
     default:
       return value;
   }
