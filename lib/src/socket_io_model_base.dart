@@ -212,27 +212,22 @@ Map setValue<T>(value) {
 }
 
 class VideoCall {
-  VideoCall({
-    this.channelName,
-    this.candidate,
-    this.fromUserId,
-    this.toUserId,
-    this.description,
-  });
+  VideoCall({this.channelName, this.candidate, this.fromUserId, this.toUserId, this.description, this.streamId});
 
   String? channelName;
   Candidate? candidate;
   int? fromUserId;
   int? toUserId;
   Description? description;
+  String? streamId;
 
   factory VideoCall.fromJson(Map<String, dynamic> json) => VideoCall(
-        channelName: json["channelName"],
-        candidate: json["candidate"] == null ? null : Candidate.fromJson(json["candidate"]),
-        fromUserId: json["fromUserId"],
-        toUserId: json["toUserId"],
-        description: json["description"] == null ? null : Description.fromJson(json["description"]),
-      );
+      channelName: json["channelName"],
+      candidate: json["candidate"] == null ? null : Candidate.fromJson(json["candidate"]),
+      fromUserId: json["fromUserId"],
+      toUserId: json["toUserId"],
+      description: json["description"] == null ? null : Description.fromJson(json["description"]),
+      streamId: json["streamId"]);
 
   Map<String, dynamic> toJson() => {
         "channelName": channelName,
@@ -240,6 +235,7 @@ class VideoCall {
         "fromUserId": fromUserId,
         "toUserId": toUserId,
         "description": description?.toJson(),
+        "streamId": streamId
       };
 }
 
