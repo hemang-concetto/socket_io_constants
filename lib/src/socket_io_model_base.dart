@@ -52,8 +52,8 @@ class Chat {
   int? localId;
 
   String? id;
-  int? fromUserId;
-  int? toUserId;
+  String? fromUserId;
+  String? toUserId;
   String? message;
   String? dateTime;
   bool? isReceived;
@@ -111,7 +111,7 @@ class User {
   @PrimaryKey(autoGenerate: true)
   int? localId;
 
-  int? id;
+  String? id;
   String? firstName;
   String? lastName;
   String? email;
@@ -216,8 +216,8 @@ class VideoCall {
 
   String? channelName;
   Candidate? candidate;
-  int? fromUserId;
-  int? toUserId;
+  String? fromUserId;
+  String? toUserId;
   Description? description;
   String? streamId;
 
