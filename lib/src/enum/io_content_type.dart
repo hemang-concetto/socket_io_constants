@@ -8,4 +8,4 @@ enum IOContentType { chat, videoCall, audioCall, stream }
 enum IOSubType { message, messageSent, messageReceived, messageSeen, messageSeenAll }
 
 /// Enum which is used to manage Type for video Call
-enum IOVideoType { onUserAdded, onUserLeft, candidate, offer, answer, bye, onStreamAdded }
+enum IOVideoType { onUserAdded, onUserLeft, candidate, offer, answer, bye }
