@@ -212,7 +212,14 @@ Map setValue<T>(value) {
 }
 
 class VideoCall {
-  VideoCall({this.channelName, this.candidate, this.fromUserId, this.toUserId, this.description, this.streamId});
+  VideoCall(
+      {this.channelName,
+      this.candidate,
+      this.fromUserId,
+      this.toUserId,
+      this.description,
+      this.streamId,
+      this.accessToken});
 
   String? channelName;
   Candidate? candidate;
@@ -220,6 +227,7 @@ class VideoCall {
   String? toUserId;
   Description? description;
   String? streamId;
+  String? accessToken;
 
   factory VideoCall.fromJson(Map<String, dynamic> json) => VideoCall(
       channelName: json["channelName"],
@@ -227,6 +235,7 @@ class VideoCall {
       fromUserId: json["fromUserId"],
       toUserId: json["toUserId"],
       description: json["description"] == null ? null : Description.fromJson(json["description"]),
+      accessToken: json["access_token"],
       streamId: json["streamId"]);
 
   Map<String, dynamic> toJson() => {
@@ -235,8 +244,9 @@ class VideoCall {
         "fromUserId": fromUserId,
         "toUserId": toUserId,
         "description": description?.toJson(),
-        "streamId": streamId
-      };
+        "streamId": streamId,
+        "access_token": accessToken
+      }..removeWhere((key, value) => value == null);
 }
 
 class Candidate {
